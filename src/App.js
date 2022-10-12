@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
+const nameArr = [
+  {
+    name: 'John',
+    age: 18,
+  },
+  {
+    name: 'Nahida',
+    age: 15,
+  },
+  {
+    name: 'Yura',
+    age: 23,
+  },
+]
 
 function App() {
+
+  const [state, setState] = useState(1);
+  const [arr, setArr] = useState(nameArr);
+  console.log(`state:${state}`);
+  
+  const onIncrease = () => {
+    setState(state+1);
+    setArr([...arr,{name:'Mr',age:state+20,}]);
+    console.log(` click! state:${state}`);
+    console.log(arr[state]);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={onIncrease}>+1</button>
+      <p>{state}</p>
     </div>
   );
 }
