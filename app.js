@@ -16,11 +16,14 @@
 // http는 한글이 깨지기 때문에 한글처리도 해줘야하며
 // 코드도 더러운편.
 
-
 const express = require("express");
 const app = express();
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, 'build'))); // 폴더의 파일들 전송가능
+
 app.get('/',(req, res) => {
-    res.send("루트");
+    res.sendFile(path.join(__dirname,'build/index.html'));
 });
 app.get("/login", (req, res) => {
     res.send("로그인 화면");
