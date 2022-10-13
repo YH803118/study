@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import Timer from "./Timer";
 const nameArr = [
   {
     name: 'John',
@@ -29,6 +29,7 @@ function App() {
   }
   return (
     <div>
+      <Timer></Timer>
       <button onClick={onIncrease}>+1</button>
       <p>{state}</p>
     </div>
