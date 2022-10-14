@@ -19,7 +19,6 @@ function App() {
 
   const [state, setState] = useState(1);
   const [arr, setArr] = useState(nameArr);
-  console.log(`state:${state}`);
   
   const onIncrease = () => {
     setState(state+1);
@@ -30,8 +29,8 @@ function App() {
   return (
     <div>
       <Timer></Timer>
-      <button onClick={onIncrease}>+1</button>
-      <p>{state}</p>
+      {/* <button onClick={onIncrease}>+1</button>
+      <p>{state}</p> */}
     </div>
   );
 }
