@@ -5,7 +5,8 @@ import './Timer.css';
 class Timer extends Component{
     state = {
         time: new Date(),
-        stop: false
+        stop: false,
+        timeUpList: []
     }
     whatTime = () => {
         this.setState({
@@ -16,12 +17,18 @@ class Timer extends Component{
     
     
     render(){
-        const timeStop = () =>{
-            this.setState({
-                stop: true
-            })
+        // let timeUpList = ['11:11:11'];
+        const nowTime = timeSet(this.state.time);
+        const timeStop = (timeUpList) =>{
+            if(this.state.stop !== true){
+                this.setState({
+                    stop: true,
+                    timeUpList: [...this.state.timeUpList,nowTime]
+                })
+            }
         }
         const timeStart = () =>{
+
             this.setState({
                 stop: false
             })
@@ -30,11 +37,29 @@ class Timer extends Component{
         if(!this.state.stop)
         setTimeout(this.whatTime, 1000);
 
-        return (<div id="watch">
-            <div id='time'>현재 시간 : {timeSet(this.state.time)} </div>
+        const TimeUp = () => {
+            if(this.state.timeUpList.length !== 0){
+                let timeArr = [];
+                for(let i of this.state.timeUpList){
+                    timeArr.push(<p key={i}>{i}</p>)
+                }
+                return (
+                    <>
+                        <p>멈춘 시간 목록</p>
+                        {timeArr}
+                    </>
+                );
+            }
+        }
+
+        return (<div id="main"><div id="watch">
+            <div id='time'>현재 시간 : {nowTime} </div>
             <button className="watchBtn" onClick={timeStart}> Start </button> 
             <button className="watchBtn" onClick={timeStop}> Stop </button>
-            </div>);
+            </div>
+            <div><TimeUp /></div>
+            </div>
+            );
     }
 }
 
