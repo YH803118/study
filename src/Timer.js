@@ -45,7 +45,7 @@ class Timer extends Component{
                 }
                 return (
                     <>
-                        <p>멈춘 시간 목록</p>
+                        <p>* 멈춘 시간 목록 *</p>
                         {timeArr}
                     </>
                 );
