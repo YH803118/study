@@ -26,6 +26,28 @@ function App() {
     console.log(` click! state:${state}`);
     console.log(arr[state]);
   }
+
+  function getData() {
+    return new Promise((resolve, reject) => {
+      // let data = 10;
+      setTimeout(() => {
+        resolve(10);
+      },1000)
+    })
+    .then(res => {
+      console.log(res); // 10
+      return ++res;
+    })
+    .then(res => {
+      console.log(res); // 11
+      return ++res;
+    });
+  // 이어붙이기도 할 수 있다.
+  
+  }
+  getData();
+  // getData().then(resoleveData => console.log(resoleveData));
+
   return (
     <div>
       <Timer></Timer>

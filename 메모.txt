@@ -51,3 +51,79 @@ setState는 비동기적이다?
 state를 수정하고 직접 확인하면 이전 state를 볼 수 있다.
 
 setState가 야기하는 불필요한 재렌더링
+
+-------------------------------------------------
+https://heytech.tistory.com/245
+
+promise - 비동기 처리에 활용되는 객체
+
+promise의 상태(State)
+ - Pending(대기)  : 비동기 로직 처리의 미완료 상태
+ - Fulfilled(이행): 비동기 로직 처리가 완료된 상태로 promise 결과값 반환 상태
+ - Rejected(실패) : 비동기 로직 처리의 실패 혹은 오류 상태
+
+Pending
+ new Promise();
+ 객체를 생성하면 대기 상태가 됨.
+
+ new Promise((resolve, reject) => {});
+ 콜백 함수를 선언할 수 있으며, 인자는 resolve와 reject
+
+Fulfilled 
+ new Promise((resolve, reject) => {
+	resolve();
+ });
+	resolve를 실행하면 Fulfilled 상태. 완료된 상태라고도 함.
+ 
+ .then(resolveData => console.log(resolveData));
+ .then을 통해 결과값을 받을 수 있다. - App.js:30
+
+Rejected
+ new Promise((resolve, reject) => {
+	reject();
+ })
+	마찬가지로 실패 상태가 됨.
+ .catch(err => console.log(err));
+
+어떻게 쓰나
+ Promise 객체 내부에서 조건에 따라 then 혹은 catch를 활용.
+
+  new Promise( (resolve, reject) => {
+      if ( 3 > 4 ){
+        resolve(100);
+      } else {
+        reject(200);
+      }
+    })
+    .then((result) => {
+      console.log("resolve: ", result);
+    })
+    .catch((result) => {
+      console.log("reject: " ,result);
+    })
+
+
+-------------------------------------------------
+fetch : 쭉 뻗어 어딘가에 있는 것을 가져오기 라는 뜻.
+ - request나 response 같은 http 파이프라인을 구성하는 요소를 조작할 수 있게 해주는 API
+
+fetch 함수
+ - js를 사용하면 필요할 때 서버에 네트워크 요청을 보내고 새 정보를 받아오는 일을 할 수 있다.
+	이는 http 요청에 최적화 되어있고 상태도 잘 추상화 되어있고, promise를 기반으로 하기 때문에
+	상태에 따른 로직을 추가하고 처리하는데 최적화되어 있다.
+	네트워크 요청이 이루어지는 경우 
+	 - 주문 전송, 사용자 정보 읽기, 서버에서 최신 정보 가져오기.
+	그런데 페이지 새로 고침 없이도 가능하다는것.
+ - 사용법
+	let promise = fetch(url, [options])
+	url : 접근하려는 url
+	options : 선택 매개변수, method나 header 등을 지정할 수 있다.
+
+	fetch('url')
+	.then(response => response.json())
+	.then(response => data.filter(item => item.isRequired));
+
+		// function(response){} === response => {}
+		// 파라미터가 하나밖에 없는 경우 괄호 생략가능
+	
+	fetch API는 3개의 interfeace를 도입하고 있는데 Headers, Request, Response이다.
