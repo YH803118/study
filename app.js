@@ -16,20 +16,25 @@
 // http는 한글이 깨지기 때문에 한글처리도 해줘야하며
 // 코드도 더러운편.
 
+
 const express = require("express");
 const app = express();
-const path = require("path");
+// const path = require("path");
+const test = require('./server/server');
 
-app.use(express.static(path.join(__dirname, 'build'))); // 폴더의 파일들 전송가능
+app.use('/api', test);
 
-app.get('/',(req, res) => {
-    res.sendFile(path.join(__dirname,'build/index.html'));
-});
-app.get("/login", (req, res) => {
-    res.send("로그인 화면");
-});
+// app.use(express.static(path.join(__dirname, 'build'))); // 폴더의 파일들 전송가능
+
+// app.get('/',(req, res) => {
+//     // res.sendFile(path.join(__dirname,'public/index.html'));
+//     res.send("<h1>안녕!!</h1>");
+// });
+// app.get("/login", (req, res) => {
+//     res.send("로그인 화면");
+// });
 // 라우팅
-
-app.listen(3000, () => {
+const port=5000;
+app.listen(port, () => {
     console.log('서버가동');
 });

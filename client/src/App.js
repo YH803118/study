@@ -1,5 +1,9 @@
 import { useState } from "react";
 import Timer from "./Timer";
+
+import axios from "axios";
+import { useEffect } from "react";
+
 const nameArr = [
   {
     name: 'John',
@@ -16,6 +20,14 @@ const nameArr = [
 ]
 
 function App() {
+
+  const callApi = async()=>{
+    axios.get("/api").then((res)=>{console.log(res.data.test)});
+  };
+
+  useEffect(()=>{
+    callApi();
+  }, []);
 
   const [state, setState] = useState(1);
   const [arr, setArr] = useState(nameArr);
