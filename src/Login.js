@@ -1,6 +1,6 @@
 import "./Login.css";
 import React, {Component} from "react";
-import fetch from "node-fetch";
+// import fetch from "node-fetch";
 
 class Login extends Component{
     state = {
