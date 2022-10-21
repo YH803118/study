@@ -1,12 +1,13 @@
 import "./Login.css";
-import React, {Component} from "react";
+import React from "react";
 // import fetch from "node-fetch";
+import { useState } from "react";
 
-class Login extends Component{
-    state = {
-       loginId : "",
-       loginPw : "", 
-    }
+function Login(){
+    // state = {
+    //    loginId : "",
+    //    loginPw : "", 
+    // }
 
     // fetch("http://localhost:3000/")
     //     .then(response => response.json())
@@ -21,8 +22,6 @@ class Login extends Component{
     //     }
     //     });
 
-
-    render() {
         function getData(e) {
             // return new Promise((resolve, reject) => {
             //   // let data = 10;
@@ -48,15 +47,25 @@ class Login extends Component{
               console.log(data);
             })
         }
+        const [values, setValues] = useState({ id: "", pw: "" });
 
+        const handleChange = (event: React.ChangeEvent<HTMLInputElement>)=>{
+            console.log(event.target);
+            const {name, value} = event.target;
+            setValues({ ...values, [name]: value });
+        }
+        const handleSubmit = (event: React.FormEvent) => {
+            event.preventDefault();
+        }
+        console.log(values);
         return (
-            <form className="loginForm">
-                아이디 <input type="text"></input><br></br>
-                비밀번호 <input type="text"></input><br></br>
-                <button onClick={getData}> 로그인 </button>
+            <form className="loginForm" onSubmit={handleSubmit}>
+                아이디 <input name="id" type="text" onChange={handleChange}></input><br></br>
+                비밀번호 <input name="pw" type="text" onChange={handleChange}></input><br></br>
+                <button type="submit" onClick={getData}> 로그인 </button>
             </form>
         );
-    }   
+        //https://mysterico.tistory.com/9
 }
 
 export default Login;

@@ -12,7 +12,6 @@ class Timer extends Component{
         this.setState({
             time : new Date()
         });
-        console.log('setState');
     }
     
     
