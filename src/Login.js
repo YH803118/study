@@ -23,12 +23,38 @@ class Login extends Component{
 
 
     render() {
+        function getData(e) {
+            // return new Promise((resolve, reject) => {
+            //   // let data = 10;
+            //   setTimeout(() => {
+            //     resolve(10);
+            //   },1000)
+            // })
+            // .then(res => {
+            //   console.log(res); // 10
+            //   return ++res;
+            // })
+            // .then(res => {
+            //   console.log(res); // 11
+            //   return ++res;
+            // });
+            console.log(e.target);
+            fetch("/api")
+            .then(res=> {
+              console.log(res);
+              return res.json();
+            })
+            .then(data => {
+              console.log(data);
+            })
+        }
+
         return (
-            <div className="loginForm">
+            <form className="loginForm">
                 아이디 <input type="text"></input><br></br>
                 비밀번호 <input type="text"></input><br></br>
-                <input type="button" value="로그인"></input>
-            </div>
+                <button onClick={getData}> 로그인 </button>
+            </form>
         );
     }   
 }
