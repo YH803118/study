@@ -2,6 +2,7 @@ import "./Login.css";
 import React from "react";
 // import fetch from "node-fetch";
 import { useState } from "react";
+import axios from "axios";
 
 function Login(){
     // state = {
@@ -49,23 +50,31 @@ function Login(){
         }
         const [values, setValues] = useState({ id: "", pw: "" });
 
-        const handleChange = (event: React.ChangeEvent<HTMLInputElement>)=>{
+        const handleChange = (event)=>{
             console.log(event.target);
             const {name, value} = event.target;
             setValues({ ...values, [name]: value });
         }
-        const handleSubmit = (event: React.FormEvent) => {
+        const handleSubmit = (event) => {
             event.preventDefault();
+            // state에 저장한 값을 가져온다.
+            console.log(values);
+
+            axios
+            .post("/api/login", values)
+            .then(res=>console.log(res));
         }
         console.log(values);
+
+        
+
         return (
             <form className="loginForm" onSubmit={handleSubmit}>
                 아이디 <input name="id" type="text" onChange={handleChange}></input><br></br>
                 비밀번호 <input name="pw" type="text" onChange={handleChange}></input><br></br>
-                <button type="submit" onClick={getData}> 로그인 </button>
+                <button type="submit"> 로그인 </button>
             </form>
         );
-        //https://mysterico.tistory.com/9
 }
 
 export default Login;
