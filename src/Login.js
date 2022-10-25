@@ -23,10 +23,13 @@ function Login(){
     //     }
     //     });
 
-    fetch("/login", {
-        method: "POST",
-        body: JSON.stringify(req),
-    })
+    // fetch("/login", {
+    //     method: "POST",
+    //     headers:{
+    //         "Content-Type":"application/json",
+    //     },
+    //     body: JSON.stringify(req),
+    // })
 
     //JSON.stringify : 오브젝트를 문자열로 변경
         function getData(e) {
