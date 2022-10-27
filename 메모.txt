@@ -208,20 +208,9 @@ API 서버?
 	ex) body{ "result":"Success" }(=JSON 형식) 뭐 대충 이런 코드를 보내주면
 		클라이언트의 브라우저가 받아서 성공알람을 띄워준다거나
 
-app.get("/api/login", (req, res)=>{
-    const { team } = req.query;
-    if(team){
-        const teamMembers = members.filter( m => m.team === team );
-        res.send(teamMembers);
-    } else {
-        res.send(members);
-    }
-    console.log(`${team}`);
-});
-// 도메인 혹은 path에 api를 넣는 경우가 많다.
+Object.keys : 각 프로퍼티의 이름들을 배열에 담아준다.
+ = [ 'id', 'name', 'team', 'AdmissionDate' ] 이런식으로
 
-app.get("/api/login/:id", (req,res)=>{
-    const { id } = req.params; // === const id = req.params.id
-    if (id === 'xxx') res.status(404).send({ message: 'this is not member' });
-    else res.send(`${id}님 환영합니다`);
-});
+Object.entries : 프로퍼티의 이름-값 쌍을 담은 배열을 준다.
+ = [ ['id', 1], ['name', 'alex'], ... ] 이런식으로
+
