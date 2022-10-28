@@ -1,0 +1,41 @@
+https://wonjunjang.medium.com/aws-ec2-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%97%90-node-js-express%EC%84%9C%EB%B2%84-%EC%98%AC%EB%A6%AC%EA%B8%B0-bb3b77ae4b73
+sudo su
+apt-get update
+apt-get install nodejs
+apt-get install npm
+nodejs -v
+------------------------------------------------------------------------------
+cd ..
+cd ..
+cd root
+
+curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
+
+bash nodesource_setup.sh
+
+apt install nodejs
+------------------------------------------------------------------------------ node 최신설치
+npm i express (i === install?)
+
+mkdir Server_example
+cd Server_example
+
+npm init
+
+vi index.js
+i - 입력
+:w - 저장
+:q - 나가기
+:wq - 저장하고 나가기
+
+npm start
+
+------------------------------------------------------------------------------------
+
+apt install nginx
+
+apt install mysql-server
+
+mysql 접속시 처음엔 비밀번호가 없으니 엔터
+따로 비밀번호 설정하던가말던가
+-------------------------------------------------------------------------------------
