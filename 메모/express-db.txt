@@ -1,0 +1,36 @@
+db 연동하기
+npm install mysql2 sequelize sequelize-cli
+
+npx sequelize init
+	=> config/config.json models migrations seeders가 생성됨
+	- config : 데이터베이스 접속에 대한 각종 설정들
+
+npx sequelize db:create --env development
+	- --env 어떤 것을 고를지
+	- database 값은 해당 이름의 데이터베이스를 생성하는것이 아니라
+	- username@host 에 password를 통해 접속해 database(스키마)를 생성
+
+npx sequelize model:generate --name Member --attributes name:string,team:string,admissionDate:date
+	- 모델 생성
+
+	sequelize 특) 모델 이름을 단수형(Member)로 생성할 경우 복수형(Members)로 자동으로 바꿔버림
+
+	defaultValue: Sequelize.fn('now') 기본값 넣기!
+
+npx sequelize db:migrate
+
+npx sequelize db:migrate:undo
+	- 가장 최근에 적용된 migration을 해제
+	- 테이블을 없애거나 하고싶은 경우 사용하자
+
+	allowNull : true
+	 - null값이 들어올 수 없다 (비어있어선 안된다.)
+	autoIncrement : true
+	 - 자동으로 이전값보다 1이 더 큰 값을 넣어줌.
+
+npx sequelize seed:generate --name initialMembers
+ 	- 시드 데이터를 추가하는 파일을 생성. 그 이름은 initialMembers
+
+시드 데이터 추가
+npx sequelize db:sedd:all
+

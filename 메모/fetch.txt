@@ -1,0 +1,33 @@
+fetch('https://www.google.com')
+ .then((response) => response.text())
+ .then((result) => { console.log(result); });
+
+ - 크롬 기본페이지가 아닌 google.com에 접속해서 실행!
+
+fetch(가져온다) : 서버에 리퀘스트를 보내고 리스폰스를 받는 함수!
+ - fetch를 사용하지 않아도 되지만 보편적으로 fetch를 사용한다고
+ - url로 리퀘스트를 보낸다.
+ - 리스폰스가 오면 .then((response) => response.text()) 를 발동
+ - 리스폰스가 객체가 되어 response 파라미터로 넘어옴
+ - .then((response) => response.text()) 처럼 바로 실행되는 것이 아니라
+    조건이 맞을때 실행되는 함수를 콜백 함수라고 한다.
+ - then : 콜백을 등록해주는 메서드이자
+    fetch 함수가 리턴하는 Promise 객체의 메서드
+ - 이전 콜백의 리턴(response.text())을 다음 콜백이 파라미터(result)로 넘겨받는다
+ - 즉 console.log(result) 로 response를 출력하게 되는것이야
+ - 실행은 하지않고 등록만 하기 때문에 바로 실행되지않음.
+
+비동기 함수들
+ - setTimeout(함수, 1000);
+    함수의 실행을 1000ms 뒤로 미룬다.
+ - setInterval(함수, 1000);
+    함수를 1000ms마다 실행(바로 실행되지않음)
+ - addEventListener
+
+Promise : 작업에 대한 상태 정보를 갖는 객체
+ - Pending(작업중)
+ - Fulfilled(성공)
+    -> 성공 상태가 되면 promise객체는 작업 성공 결과도 함께 갖게됨.(response)
+ - Rejected(실패)
+    -> 동일하게 작업 실패 정보를 갖게됨.
+ -> then 메소드 :  promise가 Fulfilled 혹은 Rejected 상태가 되었을 때 실행하는 메서드
