@@ -39,3 +39,5 @@ apt install mysql-server
 mysql 접속시 처음엔 비밀번호가 없으니 엔터
 따로 비밀번호 설정하던가말던가
 -------------------------------------------------------------------------------------
+
+ssh -i "C:\Users\dudgh\Desktop\fullstack_study\key\studyparty.pem" ubuntu@3.39.208.106
