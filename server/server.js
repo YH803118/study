@@ -4,6 +4,8 @@ const app = express();
 // let members = require('./app/members');
 const db = require('../db/models');
 const member = require('../db/models/member');
+// var cors = require('cors');
+// app.use(cors());
 
 const { Member } = db;
 // app.use('/api', test);
