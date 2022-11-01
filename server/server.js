@@ -30,10 +30,10 @@ app.get("/", (req,res)=>{
 
 //     console.log("post login");
 // });
-app.post("/api/login", (req, res)=> {
-    console.log(res);
-    res.send("post 전송");
-});
+// app.post("/api/login", (req, res)=> {
+//     console.log(res);
+//     res.send("post 전송");
+// });
 // app.get("/login", test.process.login);
 app.get("/api/login", async (req, res)=>{
     const { team } = req.query;

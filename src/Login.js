@@ -25,31 +25,31 @@ function Login(){
     
 
     //JSON.stringify : 오브젝트를 문자열로 변경
-    function getData(e) {
-        // return new Promise((resolve, reject) => {
-        //   // let data = 10;
-        //   setTimeout(() => {
-        //     resolve(10);
-        //   },1000)
-        // })
-        // .then(res => {
-        //   console.log(res); // 10
-        //   return ++res;
-        // })
-        // .then(res => {
-        //   console.log(res); // 11
-        //   return ++res;
-        // });
-        console.log(e.target);
-        fetch("/api")
-        .then(res=> {
-            console.log(res);
-            return res.json();
-        })
-        .then(data => {
-            console.log(data);
-        })
-    }
+    // function getData(e) {
+    //     // return new Promise((resolve, reject) => {
+    //     //   // let data = 10;
+    //     //   setTimeout(() => {
+    //     //     resolve(10);
+    //     //   },1000)
+    //     // })
+    //     // .then(res => {
+    //     //   console.log(res); // 10
+    //     //   return ++res;
+    //     // })
+    //     // .then(res => {
+    //     //   console.log(res); // 11
+    //     //   return ++res;
+    //     // });
+    //     console.log(e.target);
+    //     fetch("/api")
+    //     .then(res=> {
+    //         console.log(res);
+    //         return res.json();
+    //     })
+    //     .then(data => {
+    //         console.log(data);
+    //     })
+    // }
     const [values, setValues] = useState({ id: "", pw: "" });
     // fetch("/login", {
     //     method: "POST",
