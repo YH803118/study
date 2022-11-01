@@ -17,6 +17,7 @@ const port=5000; //React가 3000번 포트를 사용하기 때문에 node 서버
 app.listen(port, ()=>{console.log(`Listening on port ${port}`)});
 // listen를 호출해야 외부의 메서드를 받을 수 있다.(port번호의)
 
+
 app.get("/", (req,res)=>{
     res.send(`<h1>localhost:${port} - express로 접속 성공</h1>`);
     console.log(`${port} 접속 성공`);
@@ -29,7 +30,10 @@ app.get("/", (req,res)=>{
 
 //     console.log("post login");
 // });
-// app.post("/login", test.output.login);
+app.post("/api/login", (req, res)=> {
+    console.log(res);
+    res.send("post 전송");
+});
 // app.get("/login", test.process.login);
 app.get("/api/login", async (req, res)=>{
     const { team } = req.query;
