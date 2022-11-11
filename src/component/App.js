@@ -2,10 +2,12 @@
 import Timer from "./Timer";
 
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Login from "./Login";
 import { getData } from "./api";
+import MemberInput from "./MemberInput";
+import MemberList from "./MemberList";
 
 function App() {
   // const callApi = async()=>{
@@ -27,19 +29,45 @@ function App() {
   // }
 
   // getData().then(resoleveData => console.log(resoleveData));
-
+  const [items, setItems] = useState();
   const getLoad = async () => {
     const result = await getData();
+    setItems(result);
     console.log(result);
   };
 
-  getLoad();
+  // const handleLoad = async (options) => {
+  //   let result;
+  //   try {
+  //     setIsLoading(true);
+  //     setLoadingError(null);
+  //     result = await getReviews(options);
+  //   } catch (error) {
+  //     setLoadingError(error);
+  //     return;
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  //   const { reviews, paging } = result;
+  //   if (options.offset === 0) {
+  //     setItems(reviews);
+  //   } else {
+  //     setItems((prevItems) => [...prevItems, ...reviews]);
+  //   }
+
+  //   setOffset(options.offset + reviews.length);
+  //   setHasNext(paging.hasNext);
+  // };
+
+  useEffect(() => getLoad(), []);
   return (
     <div>
       <Timer></Timer>
       {/* <button onClick={onIncrease}>+1</button>
       <p>{state}</p> */}
       <Login />
+      <MemberInput />
+      <MemberList items={items} />
       <div>
         <Link to="/">Main</Link>
         <Link to="/Login">main</Link>
